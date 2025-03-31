@@ -18,7 +18,7 @@ namespace diplom
     public partial class Form1 : Form
     {
         private const string YANDEX_API_URL = "https://api.iot.yandex.net/v1.0/user/info";
-        private const string ACCESS_TOKEN = "ВАШ_ТОКЕН"; // Вставь сюда свой токен
+        private const string ACCESS_TOKEN = "y0__xCawdl6GIbJNiDIua7YEiiF4wsfD-QrgI5Cft8QKqbaw6O8"; // Вставь сюда свой токен
         public Form1()
         {
             InitializeComponent();
@@ -38,6 +38,8 @@ namespace diplom
             using (HttpClient client = new HttpClient())
             {
                 client.DefaultRequestHeaders.Add("Authorization", "Bearer " + ACCESS_TOKEN);
+                client.DefaultRequestHeaders.Add("User-Agent", "MySmartHomeApp/1.0"); // Добавляем заголовок
+
                 HttpResponseMessage response = await client.GetAsync(YANDEX_API_URL);
 
                 if (response.IsSuccessStatusCode)
@@ -50,7 +52,8 @@ namespace diplom
                 }
             }
         }
-            private void exit_Click(object sender, EventArgs e)
+
+        private void exit_Click(object sender, EventArgs e)
         {
             this.Close();
         }
