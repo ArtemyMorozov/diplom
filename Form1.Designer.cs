@@ -31,6 +31,7 @@
             this.con1 = new System.Windows.Forms.Button();
             this.exit = new System.Windows.Forms.Button();
             this.listView1 = new System.Windows.Forms.ListView();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // con1
@@ -47,9 +48,9 @@
             // exit
             // 
             this.exit.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.exit.Location = new System.Drawing.Point(711, 12);
+            this.exit.Location = new System.Drawing.Point(662, 12);
             this.exit.Name = "exit";
-            this.exit.Size = new System.Drawing.Size(77, 42);
+            this.exit.Size = new System.Drawing.Size(126, 42);
             this.exit.TabIndex = 1;
             this.exit.Text = "Exit";
             this.exit.UseVisualStyleBackColor = true;
@@ -60,12 +61,22 @@
             this.listView1.FullRowSelect = true;
             this.listView1.GridLines = true;
             this.listView1.HideSelection = false;
-            this.listView1.Location = new System.Drawing.Point(12, 71);
+            this.listView1.Location = new System.Drawing.Point(12, 97);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(776, 367);
+            this.listView1.Size = new System.Drawing.Size(776, 341);
             this.listView1.TabIndex = 3;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Enabled = false;
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBox1.Location = new System.Drawing.Point(662, 57);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(126, 34);
+            this.textBox1.TabIndex = 4;
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // Form1
             // 
@@ -73,6 +84,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.listView1);
             this.Controls.Add(this.exit);
             this.Controls.Add(this.con1);
@@ -82,6 +94,7 @@
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -90,6 +103,7 @@
         private System.Windows.Forms.Button con1;
         private System.Windows.Forms.Button exit;
         private System.Windows.Forms.ListView listView1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

@@ -21,9 +21,15 @@ namespace diplom
     {
         private const string YANDEX_API_URL = "https://api.iot.yandex.net/v1.0/user/info";
         private const string ACCESS_TOKEN = "y0__xCawdl6GJHJNiCp7bPYEhcU7bpUj-abymhBU1ClAyawB27l"; // Вставь сюда свой токен
+        private DateTime startTime; // Время, когда была нажата кнопка
+        private Timer timer; // Таймер для обновления секундомера
+
         public Form1()
         {
             InitializeComponent();
+            timer = new Timer();
+            timer.Interval = 1000; // Таймер обновляется каждую секунду
+            timer.Tick += Timer_Tick; // Обработчик события таймера
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -35,12 +41,22 @@ namespace diplom
 
         private async void con1_Click(object sender, EventArgs e)
         {
+            // Сохраняем текущее время при нажатии на кнопку
+            startTime = DateTime.Now;
+
+            // Запускаем таймер
+            timer.Start();
+
+            // Очищаем TextBox перед запуском таймера
+            textBox1.Clear();
+
             string jsonResponse = await GetDevicesFromYandex();
             listView1.Items.Clear(); // Очищаем перед новым запросом
 
             JObject data = JObject.Parse(jsonResponse);
             JArray devices = (JArray)data["devices"];
 
+            // Добавляем устройства в ListView
             foreach (JObject device in devices)
             {
                 string name = device["name"].ToString();
@@ -78,6 +94,18 @@ namespace diplom
             }
         }
 
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+            TimeSpan elapsedTime = DateTime.Now - startTime; // Вычисляем разницу во времени
+
+            // Форматируем время в ЧЧ:ММ:СС
+            string formattedTime = string.Format("{0:D2}:{1:D2}:{2:D2}",
+                elapsedTime.Hours, elapsedTime.Minutes, elapsedTime.Seconds);
+
+            textBox1.Text = formattedTime; // Выводим в TextBox
+        }
+
+
 
 
 
@@ -103,6 +131,7 @@ namespace diplom
 
         private void exit_Click(object sender, EventArgs e)
         {
+            timer.Stop();
             this.Close();
         }
     }
