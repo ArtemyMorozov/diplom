@@ -40,7 +40,7 @@
             this.con1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.con1.Location = new System.Drawing.Point(12, 12);
             this.con1.Name = "con1";
-            this.con1.Size = new System.Drawing.Size(191, 42);
+            this.con1.Size = new System.Drawing.Size(191, 34);
             this.con1.TabIndex = 0;
             this.con1.Text = "connection";
             this.con1.UseVisualStyleBackColor = true;
@@ -51,7 +51,7 @@
             this.exit.ForeColor = System.Drawing.SystemColors.ControlText;
             this.exit.Location = new System.Drawing.Point(662, 12);
             this.exit.Name = "exit";
-            this.exit.Size = new System.Drawing.Size(126, 42);
+            this.exit.Size = new System.Drawing.Size(126, 34);
             this.exit.TabIndex = 1;
             this.exit.Text = "Exit";
             this.exit.UseVisualStyleBackColor = true;
@@ -73,7 +73,7 @@
             // 
             this.textBox1.Enabled = false;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBox1.Location = new System.Drawing.Point(662, 57);
+            this.textBox1.Location = new System.Drawing.Point(662, 50);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(126, 34);
             this.textBox1.TabIndex = 4;
