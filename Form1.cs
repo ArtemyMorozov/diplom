@@ -10,6 +10,8 @@ using System.Windows.Forms;
 using System.Net.Http;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Newtonsoft.Json.Linq;
+using System.Diagnostics;
+using System.IO;   // Для File и Path
 
 
 
@@ -18,19 +20,19 @@ namespace diplom
     public partial class Form1 : Form
     {
         private const string YANDEX_API_URL = "https://api.iot.yandex.net/v1.0/user/info";
-        private const string ACCESS_TOKEN = "y0__xCawdl6GJHJNiCp7bPYEhcU7bpUj-abymhBU1ClAyawB27l"; // Вставь сюда свой токен
-        private DateTime startTime; // Время, когда была нажата кнопка
-        private Timer timer; // Таймер для обновления секундомера
+        private const string ACCESS_TOKEN = "y0__xCawdl6GJHJNiCp7bPYEhcU7bpUj-abymhBU1ClAyawB27l"; 
+        private DateTime startTime; 
+        private Timer timer;
         private Timer deviceUpdateTimer;
 
         public Form1()
         {
             InitializeComponent();
             timer = new Timer();
-            timer.Interval = 1000; // Таймер обновляется каждую секунду
-            timer.Tick += Timer_Tick; // Обработчик события таймера
+            timer.Interval = 1000; 
+            timer.Tick += Timer_Tick; 
             deviceUpdateTimer = new Timer();
-            deviceUpdateTimer.Interval = 5000; // 5 секунд
+            deviceUpdateTimer.Interval = 5000; 
             deviceUpdateTimer.Tick += async (s, e) => await UpdateDevicesList();
         }
 
@@ -39,6 +41,8 @@ namespace diplom
             listView1.Columns.Add("Название", 250);
             listView1.Columns.Add("Тип", 320);
             listView1.Columns.Add("Состояние", 201);
+            textBoxToken.Text = Properties.Settings.Default.AccessToken;
+
         }
 
         private async void con1_Click(object sender, EventArgs e)
@@ -64,10 +68,17 @@ namespace diplom
 
         private async Task<string> GetDevicesFromYandex()
         {
+            string token = Properties.Settings.Default.AccessToken;
+
+            if (string.IsNullOrWhiteSpace(token))
+            {
+                return "Ошибка: токен не задан.";
+            }
+
             using (HttpClient client = new HttpClient())
             {
-                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + ACCESS_TOKEN);
-                client.DefaultRequestHeaders.Add("User-Agent", "MySmartHomeApp/1.0"); // Добавляем заголовок
+                client.DefaultRequestHeaders.Add("Authorization", "Bearer " + token);
+                client.DefaultRequestHeaders.Add("User-Agent", "MySmartHomeApp/1.0");
 
                 HttpResponseMessage response = await client.GetAsync(YANDEX_API_URL);
 
@@ -81,6 +92,7 @@ namespace diplom
                 }
             }
         }
+
 
         private async Task UpdateDevicesList()
         {
@@ -134,6 +146,31 @@ namespace diplom
         {
             timer.Stop();
             this.Close();
+        }
+
+        private void btnOpenTokenSite_Click(object sender, EventArgs e)
+        {
+            string filePath = Path.Combine(Application.StartupPath, "README.txt");
+
+            if (File.Exists(filePath))
+            {
+                Process.Start(new ProcessStartInfo
+                {
+                    FileName = filePath,
+                    UseShellExecute = true
+                });
+            }
+            else
+            {
+                MessageBox.Show("Файл README.txt не найден в папке с приложением.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnSaveToken_Click(object sender, EventArgs e)
+        {
+            Properties.Settings.Default.AccessToken = textBoxToken.Text;
+            Properties.Settings.Default.Save();
+            MessageBox.Show("Токен сохранен.");
         }
     }
 }
