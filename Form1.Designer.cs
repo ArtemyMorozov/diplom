@@ -35,7 +35,6 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxToken = new System.Windows.Forms.TextBox();
-            this.btnOpenTokenSite = new System.Windows.Forms.Button();
             this.btnSaveToken = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -95,23 +94,12 @@
             // 
             // textBoxToken
             // 
-            this.textBoxToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxToken.Location = new System.Drawing.Point(176, 12);
+            this.textBoxToken.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.textBoxToken.Location = new System.Drawing.Point(176, 22);
             this.textBoxToken.Name = "textBoxToken";
-            this.textBoxToken.Size = new System.Drawing.Size(348, 34);
+            this.textBoxToken.Size = new System.Drawing.Size(348, 22);
             this.textBoxToken.TabIndex = 6;
             this.textBoxToken.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // btnOpenTokenSite
-            // 
-            this.btnOpenTokenSite.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.btnOpenTokenSite.Location = new System.Drawing.Point(12, 47);
-            this.btnOpenTokenSite.Name = "btnOpenTokenSite";
-            this.btnOpenTokenSite.Size = new System.Drawing.Size(160, 34);
-            this.btnOpenTokenSite.TabIndex = 7;
-            this.btnOpenTokenSite.Text = "Как получить токен?";
-            this.btnOpenTokenSite.UseVisualStyleBackColor = true;
-            this.btnOpenTokenSite.Click += new System.EventHandler(this.btnOpenTokenSite_Click);
             // 
             // btnSaveToken
             // 
@@ -131,7 +119,6 @@
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.btnSaveToken);
-            this.Controls.Add(this.btnOpenTokenSite);
             this.Controls.Add(this.textBoxToken);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.textBox1);
@@ -157,7 +144,6 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBoxToken;
-        private System.Windows.Forms.Button btnOpenTokenSite;
         private System.Windows.Forms.Button btnSaveToken;
     }
 }

@@ -148,24 +148,6 @@ namespace diplom
             this.Close();
         }
 
-        private void btnOpenTokenSite_Click(object sender, EventArgs e)
-        {
-            string filePath = Path.Combine(Application.StartupPath, "README.txt");
-
-            if (File.Exists(filePath))
-            {
-                Process.Start(new ProcessStartInfo
-                {
-                    FileName = filePath,
-                    UseShellExecute = true
-                });
-            }
-            else
-            {
-                MessageBox.Show("Файл README.txt не найден в папке с приложением.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
         private void btnSaveToken_Click(object sender, EventArgs e)
         {
             Properties.Settings.Default.AccessToken = textBoxToken.Text;
